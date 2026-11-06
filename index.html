@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sorry from Kiki the kitten</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#FFD9E8;--bg2:#E3D8FF;--ink:#4A2D6B;--card:rgba(255,255,255,.75);--btn:#fff;--ring:#FF8FAB;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#3a1f4d;--bg2:#1f1a4a;--ink:#FFE9F3;--card:rgba(255,255,255,.12);--btn:#5a3a7a}}
+:root[data-theme="dark"]{--bg1:#3a1f4d;--bg2:#1f1a4a;--ink:#FFE9F3;--card:rgba(255,255,255,.12);--btn:#5a3a7a}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--ink);font-family:'Fredoka','Trebuchet MS',system-ui,sans-serif;display:flex;justify-content:center;overflow-x:hidden}
+main{position:relative;z-index:2;width:100%;max-width:520px;padding:18px 18px 40px;text-align:center}
+h1{font-size:clamp(1.7rem,7.5vw,2.4rem);margin:4px 0;font-weight:600}
+#msg{min-height:3em;font-size:1.1rem;margin:4px auto 6px;max-width:32ch}
+.stage{width:min(320px,82vw);margin:0 auto;cursor:pointer;-webkit-tap-highlight-color:transparent}
+svg{width:100%;height:auto;overflow:visible;display:block}
+.sq{transform-origin:120px 262px;animation:breathe 3s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.02,.98)}}
+.hop .sq{animation:hop .7s ease-out}
+.party .sq{animation:party .8s ease-in-out infinite}
+@keyframes hop{0%{transform:none}30%{transform:scale(1.12,.85)}60%{transform:translateY(-26px) scale(.95,1.08)}100%{transform:none}}
+@keyframes party{0%,100%{transform:none}50%{transform:translateY(-22px) rotate(3deg)}}
+.head{transform-origin:120px 170px;animation:tilt 4s ease-in-out infinite}
+@keyframes tilt{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.tail{transform-origin:168px 225px;animation:wag 1.6s ease-in-out infinite}
+.mid .tail{animation-duration:.9s}.happy .tail{animation-duration:.35s}
+@keyframes wag{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(16deg)}}
+.ear{transform-box:fill-box;transform-origin:50% 100%}
+.ear.l{animation:twitch 5s infinite}
+.ear.r{animation:twitch 5s 2s infinite}
+@keyframes twitch{0%,88%,100%{transform:none}92%{transform:rotate(-10deg)}96%{transform:rotate(6deg)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.sign{transform-origin:120px 196px;animation:swing 2.4s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.tear{opacity:0;transform-box:fill-box;transform-origin:center top}
+.sad .tear{animation:cry 1.6s infinite}
+.sad .tear.b{animation-delay:.5s}
+@keyframes cry{0%{opacity:0;transform:translateY(-4px) scale(.5)}20%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(34px)}}
+.sad .eyes-happy,.mid .eyes-happy{display:none}
+.happy .eyes-open{display:none}
+.eyes-happy{display:none;fill:none;stroke:#4A2D6B;stroke-width:5;stroke-linecap:round}
+.happy .eyes-happy{display:block}
+.blush{transition:opacity .5s}
+#mouth{fill:none;stroke:#4A2D6B;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.happy #mouth{fill:#FF8FAB}
+.hearts{font-size:1.6rem;letter-spacing:4px;margin:12px 0 2px}
+.hearts span{display:inline-block;filter:grayscale(1);opacity:.35;transition:all .4s}
+.hearts span.on{filter:none;opacity:1;animation:beat 1s infinite}
+@keyframes beat{50%{transform:scale(1.25)}}
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+button{font:inherit;font-weight:600;font-size:1.05rem;color:var(--ink);background:var(--btn);border:3px solid var(--ring);border-radius:22px;padding:13px 8px;cursor:pointer;box-shadow:0 4px 0 var(--ring);transition:transform .12s,box-shadow .12s}
+button:active{transform:translateY(4px);box-shadow:0 0 0 var(--ring)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.name{background:var(--card);border-radius:20px;padding:10px 14px;display:flex;gap:8px;align-items:center;justify-content:center;font-size:.95rem}
+input{font:inherit;border:2px solid var(--ring);background:transparent;color:var(--ink);border-radius:12px;padding:6px 10px;width:9em}
+.fx{position:fixed;pointer-events:none;z-index:9;font-size:28px;animation:rise 1.7s ease-out forwards}
+@keyframes rise{from{opacity:1;transform:translateY(0) scale(.6)}to{opacity:0;transform:translateY(-240px) scale(1.4) rotate(var(--rot))}}
+.bg{position:fixed;bottom:-40px;z-index:1;pointer-events:none;opacity:.7;animation:drift linear infinite}
+@keyframes drift{from{transform:translateY(0) rotate(0)}to{transform:translateY(-115vh) rotate(40deg)}}
+.rain{position:fixed;top:-40px;z-index:9;pointer-events:none;font-size:24px;animation:fall 2.6s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">Kiki is so sorry</h1>
+  <p id="msg" aria-live="polite"></p>
+
+  <div class="stage sad" id="stage" role="button" tabindex="0" aria-label="Pet Kiki the kitten">
+    <svg viewBox="0 0 240 275" role="img" aria-label="Kiki, a white kitten holding a sorry sign">
+      <g class="sq">
+        <ellipse cx="120" cy="266" rx="70" ry="7" fill="#000" opacity=".1"/>
+        <path class="tail" d="M168 232 Q214 224 206 172" fill="none" stroke="#FFC9A8" stroke-width="18" stroke-linecap="round"/>
+        <ellipse cx="120" cy="226" rx="56" ry="42" fill="#fff"/>
+        <g class="head">
+          <g class="ear l"><polygon points="58,104 62,50 106,80" fill="#fff" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><polygon points="68,92 70,66 92,82" fill="#FFB3CC"/></g>
+          <g class="ear r"><polygon points="182,104 178,50 134,80" fill="#fff" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><polygon points="172,92 170,66 148,82" fill="#FFB3CC"/></g>
+          <ellipse cx="120" cy="134" rx="72" ry="58" fill="#fff"/>
+          <ellipse cx="156" cy="100" rx="26" ry="17" fill="#FFC9A8" transform="rotate(-20 156 100)"/>
+          <g class="eyes-open">
+            <g class="eye"><circle cx="88" cy="136" r="16" fill="#3B2A63"/><g class="pup"><circle cx="82" cy="130" r="6" fill="#fff"/><circle cx="94" cy="142" r="3" fill="#fff"/></g></g>
+            <g class="eye"><circle cx="152" cy="136" r="16" fill="#3B2A63"/><g class="pup"><circle cx="146" cy="130" r="6" fill="#fff"/><circle cx="158" cy="142" r="3" fill="#fff"/></g></g>
+          </g>
+          <g class="eyes-happy"><path d="M72 140 Q88 118 104 140"/><path d="M136 140 Q152 118 168 140"/></g>
+          <ellipse class="tear a" cx="80" cy="156" rx="5" ry="8" fill="#8ED8FF"/>
+          <ellipse class="tear b" cx="160" cy="156" rx="5" ry="8" fill="#8ED8FF"/>
+          <ellipse class="blush" id="b1" cx="66" cy="156" rx="13" ry="8" fill="#FF8FAB" opacity=".35"/>
+          <ellipse class="blush" id="b2" cx="174" cy="156" rx="13" ry="8" fill="#FF8FAB" opacity=".35"/>
+          <path d="M114 152 L126 152 L120 160 Z" fill="#FF8FAB" stroke="#FF8FAB" stroke-width="3" stroke-linejoin="round"/>
+          <path id="mouth" d="M110 172 Q120 164 130 172"/>
+          <g stroke="#4A2D6B" stroke-width="2" stroke-linecap="round" opacity=".5"><path d="M48 150 L74 154M46 162 L72 160M192 150 L166 154M194 162 L168 160"/></g>
+        </g>
+        <g class="sign">
+          <rect x="74" y="196" width="92" height="52" rx="12" fill="#FFF3A8" stroke="#FFB84D" stroke-width="4"/>
+          <text x="120" y="228" text-anchor="middle" font-family="Fredoka,sans-serif" font-weight="600" font-size="24" fill="#4A2D6B">Sorry!</text>
+          <text x="86" y="212" font-size="11">💗</text><text x="146" y="242" font-size="11">✨</text>
+          <circle cx="78" cy="204" r="11" fill="#fff" stroke="#FFD0DE" stroke-width="3"/>
+          <circle cx="162" cy="204" r="11" fill="#fff" stroke="#FFD0DE" stroke-width="3"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hearts" id="hearts" aria-hidden="true"><span>💗</span><span>💗</span><span>💗</span><span>💗</span></div>
+  <div id="label" class="sr" style="font-size:.9rem;opacity:.8">Mood: sad</div>
+
+  <div class="gifts">
+    <button data-g="🍓">🍓 Strawberry</button>
+    <button data-g="🧋">🧋 Bubble tea</button>
+    <button data-g="🧸">🧸 Teddy</button>
+    <button data-g="💐">💐 Flowers</button>
+  </div>
+</main>
+
+<script>
+(function(){
+  var mood=0, step=0, stage=document.getElementById('stage'), msg=document.getElementById('msg');
+  var mouth=document.getElementById('mouth'), title=document.getElementById('title');
+  var hearts=document.querySelectorAll('#hearts span'), label=document.getElementById('label');
+  var pups=document.querySelectorAll('.pup'), b1=document.getElementById('b1'), b2=document.getElementById('b2');
+  function nm(){ return 'boss'; }
+  var L=[
+    {m:'M110 172 Q120 164 130 172', c:'sad', s:'sad', t:function(){return 'Please don’t be angry, '+nm()+'… I brought a sorry sign. 🥺'}},
+    {m:'M108 168 Q114 174 120 168 Q126 174 132 168', c:'mid', s:'a bit better', t:function(){return 'A strawberry? For me? Okay, I’m sniffling less…'}},
+    {m:'M108 166 Q114 174 120 166 Q126 174 132 166', c:'mid', s:'warming up', t:function(){return 'Is that a tiny smile, '+nm()+'? I see it! 👀'}},
+    {m:'M108 164 Q114 176 120 166 Q126 176 132 164', c:'mid', s:'almost happy', t:function(){return 'One more present and we’re best friends again!'}},
+    {m:'M106 162 Q120 190 134 162 Z', c:'happy party', s:'happy!', t:function(){return 'Yay! '+nm()+' forgave Kiki! I’ll do better next time. 💖'}}
+  ];
+  function render(){
+    var s=L[step];
+    mouth.setAttribute('d',s.m); stage.className='stage '+s.c;
+    var o=Math.min(.9,.35+step*.15); b1.style.opacity=o; b2.style.opacity=o;
+    hearts.forEach(function(h,i){ h.className=i<step?'on':''; });
+    msg.textContent=s.t(); label.textContent='Mood: '+s.s;
+    title.textContent=step>=4?'She smiled!':'Kiki is so sorry';
+  }
+  function fx(emoji,n){
+    var r=stage.getBoundingClientRect();
+    for(var i=0;i<n;i++){
+      var d=document.createElement('span'); d.className='fx'; d.textContent=emoji;
+      d.style.left=(r.left+r.width*(.15+Math.random()*.7))+'px';
+      d.style.top=(r.top+r.height*.4)+'px';
+      d.style.setProperty('--rot',(Math.random()*90-45)+'deg');
+      d.style.animationDelay=(i*70)+'ms';
+      document.body.appendChild(d); setTimeout(function(x){x.remove()}.bind(null,d),2300);
+    }
+  }
+  function hop(){
+    if(step>=4) return;
+    stage.classList.remove('hop'); void stage.offsetWidth; stage.classList.add('hop');
+    setTimeout(function(){stage.classList.remove('hop')},750);
+  }
+  function confetti(){
+    var e=['🎉','💖','🌸','✨','🍓','⭐'];
+    for(var i=0;i<26;i++){
+      var d=document.createElement('span'); d.className='rain'; d.textContent=e[i%e.length];
+      d.style.left=(Math.random()*95)+'vw'; d.style.animationDelay=(Math.random()*1.4)+'s';
+      document.body.appendChild(d); setTimeout(function(x){x.remove()},4500,d);
+    }
+  }
+  document.querySelectorAll('.gifts button').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(step<4){ step++; render(); hop(); fx(b.dataset.g,4); if(step===4){ fx('💖',8); confetti(); } }
+      else { fx('💖',6); confetti(); }
+    });
+  });
+  function pet(){ fx('💗',3); hop(); }
+  stage.addEventListener('click',pet);
+  stage.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pet(); } });
+  window.addEventListener('pointermove',function(e){
+    var r=stage.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height*.5;
+    var dx=Math.max(-1,Math.min(1,(e.clientX-cx)/300)), dy=Math.max(-1,Math.min(1,(e.clientY-cy)/300));
+    pups.forEach(function(p){ p.style.transform='translate('+(dx*5)+'px,'+(dy*4)+'px)'; });
+  });
+  var em=['💗','✨','🌸','⭐','🤍'];
+  for(var i=0;i<14;i++){
+    var s=document.createElement('span'); s.className='bg'; s.textContent=em[i%em.length];
+    s.style.left=(Math.random()*96)+'vw'; s.style.fontSize=(14+Math.random()*18)+'px';
+    s.style.animationDuration=(9+Math.random()*10)+'s'; s.style.animationDelay=(-Math.random()*14)+'s';
+    document.body.appendChild(s);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
